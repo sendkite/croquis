@@ -9,5 +9,4 @@ class CroquisApplicationTests {
 	@Test
 	fun contextLoads() {
 	}
-
 }

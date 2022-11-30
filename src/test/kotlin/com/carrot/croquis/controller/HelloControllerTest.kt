@@ -1,4 +1,4 @@
-package com.carrot.croquis.study
+package com.carrot.croquis.controller
 
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -9,25 +9,22 @@ import org.springframework.test.web.reactive.server.WebTestClient
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureWebTestClient
-class HelloControllerTest @Autowired constructor(
-
-) {
+class HelloControllerTest {
 
     @Autowired
     lateinit var client: WebTestClient
-
 
     @Test
     fun `hello를 응답`() {
 
         val result = client
             .get()
-            .uri("/hello")
+            .uri("/api/hello")
             .exchange()
             .expectBody(String::class.java)
             .returnResult()
             .responseBody
 
-        assertThat(result).isEqualTo("hello")
+        assertThat(result).isEqualTo("Hello")
     }
 }
